@@ -1,0 +1,6 @@
+- télécharger anacondater et l'installer (Python 3.x)
+- créer compte GitHub
+- installer "GitHub Desktop"
+- grab repository lemire/technolab. Il va aller dans Documents/Github...
+- lancer anaconda navigator + lancer jupyter notebook
+- à partir de jupyter notebook, ouvrir le notebook salaries
