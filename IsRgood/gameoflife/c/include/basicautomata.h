@@ -1,10 +1,9 @@
 #ifndef BASICAUTOMATA_H
 #define BASICAUTOMATA_H
 
-#include <stdint.h>
-#include <stdbool.h>
 #include <assert.h>
-
+#include <stdbool.h>
+#include <stdint.h>
 
 void clear(uint32_t *counts, size_t width, size_t height) {
   for (size_t i = 0; i < height; i++) {
@@ -40,23 +39,22 @@ void computecounts(uint32_t *counts, const bool *states, size_t width,
   }
 }
 
-void gameoflife(uint32_t *counts, bool *states, size_t width,
-               size_t height) {
+void gameoflife(uint32_t *counts, bool *states, size_t width, size_t height) {
   computecounts(counts, states, width, height);
   for (size_t i = 0; i < height; i++) {
     for (size_t j = 0; j < width; j++) {
       size_t coord = i * width + j;
-      bool  currentvalue = states[coord];
+      bool currentvalue = states[coord];
       uint32_t neighbors = counts[coord];
-            if(currentvalue ) {
-              if(neighbors < 2 || neighbors > 3) {
-                states[coord] = false;
-              }
-            } else {
-              if(neighbors == 3) {
-                states[coord] = true;
-              }
-            }
+      if (currentvalue) {
+        if (neighbors < 2 || neighbors > 3) {
+          states[coord] = false;
+        }
+      } else {
+        if (neighbors == 3) {
+          states[coord] = true;
+        }
+      }
     }
   }
 }

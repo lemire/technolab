@@ -2,10 +2,10 @@
 #define PNGHELPER_H
 
 #include <png.h>
+#include <stdbool.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdint.h>
-#include <stdbool.h>
 
 /* most code taken from https://www.lemoda.net/c/write-png/ */
 
@@ -112,20 +112,20 @@ fopen_failed:
   return status;
 }
 
-void mapdatatoimage( bitmap_t *image, const bool *states) {
-    for (size_t y = 0; y < image->height; y++) {
-      for (size_t x = 0; x < image->width; x++) {
-        pixel_t *pixel = pixel_at(image, x, y);
-        if (states[y * image->width + x]) {
-          pixel->red = 0;
-          pixel->green = 0;
-          pixel->blue = 0;
-        } else {
-          pixel->red = 255;
-          pixel->green = 255;
-          pixel->blue = 255;
-        }
+void mapdatatoimage(bitmap_t *image, const bool *states) {
+  for (size_t y = 0; y < image->height; y++) {
+    for (size_t x = 0; x < image->width; x++) {
+      pixel_t *pixel = pixel_at(image, x, y);
+      if (states[y * image->width + x]) {
+        pixel->red = 0;
+        pixel->green = 0;
+        pixel->blue = 0;
+      } else {
+        pixel->red = 255;
+        pixel->green = 255;
+        pixel->blue = 255;
       }
     }
-    }
+  }
+}
 #endif
