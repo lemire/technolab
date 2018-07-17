@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 
   char cated_string[255];
 
-  for (size_t t = 0; t < 10; t++) {
+  for (size_t t = 0; t < 100; t++) {
     gameoflife(counts, states, N, N);
     mapdatatoimage(&image, states);
     sprintf(cated_string, "result%zu.png", t);

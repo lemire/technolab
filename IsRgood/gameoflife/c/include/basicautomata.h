@@ -4,6 +4,7 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stdint.h>
+#include <stddef.h>
 
 void clear(uint32_t *counts, size_t width, size_t height) {
   for (size_t i = 0; i < height; i++) {
@@ -34,6 +35,14 @@ void computecounts(uint32_t *counts, const bool *states, size_t width,
           counts[i * width + j + 1]++;
         if (j > 1)
           counts[i * width + j - 1]++;
+        if ((i < height - 1) && (j < width - 1))
+          counts[(i + 1) * width + (j + 1)]++;
+        if ((i > 1) && (j > 1))
+          counts[(i - 1) * width + ( j - 1 )]++;
+        if ((j < width - 1) && (i > 1))
+          counts[(i - 1) * width + j + 1]++;
+        if ((j > 1) && (i < height - 1))
+          counts[(i + 1) * width + (j - 1)]++;
       }
     }
   }
