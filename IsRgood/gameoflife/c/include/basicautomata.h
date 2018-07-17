@@ -49,7 +49,7 @@ void gameoflife(uint32_t *counts, bool *states, size_t width,
       bool  currentvalue = states[coord];
       uint32_t neighbors = counts[coord];
             if(currentvalue ) {
-              if(neighbors < 2 || neighbors > 2) {
+              if(neighbors < 2 || neighbors > 3) {
                 states[coord] = false;
               }
             } else {
