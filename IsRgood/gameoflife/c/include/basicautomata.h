@@ -5,7 +5,7 @@
 #include <stdbool.h>
 #include <stddef.h>
 #include <stdint.h>
-
+#include <string.h>
 void clear(uint32_t *counts, size_t width, size_t height) {
   memset(counts, 0, width * height * sizeof(uint32_t));
   /*for (size_t i = 0; i < height; i++) {
@@ -142,20 +142,12 @@ void computecounts8vec(uint8_t *counts, const uint8_t *states, size_t width,
   }
 }
 
-void print(__m256i x) {
-  uint8_t buffer[32];
-  _mm256_storeu_si256((__m256i *)buffer, x);
-  printf("[");
-  for (int k = 0; k < 32; k++)
-    printf("%d ", buffer[k]);
-  printf("]");
-}
 void gameoflife8vec(uint8_t *counts, uint8_t *states, size_t width,
                     size_t height) {
   assert(width % (sizeof(__m256i)) == 0);
   size_t awidth = width + 2;
 
-  computecounts8(counts, states, width, height); //
+  computecounts8vec(counts, states, width, height); //
   // computecounts8vec(counts, states, width, height);
 
   __m256i shufmask =
