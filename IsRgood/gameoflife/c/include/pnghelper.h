@@ -128,4 +128,21 @@ void mapdatatoimage(bitmap_t *image, const uint8_t *states) {
     }
   }
 }
+
+void mapdatatoimage_margin1(bitmap_t *image, const uint8_t *states) {
+  for (size_t y = 0; y < image->height; y++) {
+    for (size_t x = 0; x < image->width; x++) {
+      pixel_t *pixel = pixel_at(image, x, y);
+      if (states[(y + 1) * (image->width + 2) + (x + 1)] == 1) {
+        pixel->red = 0;
+        pixel->green = 0;
+        pixel->blue = 0;
+      } else {
+        pixel->red = 255;
+        pixel->green = 255;
+        pixel->blue = 255;
+      }
+    }
+  }
+}
 #endif

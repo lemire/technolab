@@ -6,7 +6,7 @@
 
 .PHONY: clean cleandist
 
-CFLAGS =  -fPIC -std=c99 -O3  -Wall -Wextra -Wshadow -Wno-implicit-function-declaration  
+CFLAGS =  -fPIC -std=c99 -O3  -Wall -Wextra -Wshadow -Wno-implicit-function-declaration  -march=native
 LIBS= -lpng
 EXECUTABLES=gameoflife
 
