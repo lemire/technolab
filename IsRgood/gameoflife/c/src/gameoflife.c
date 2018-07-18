@@ -8,8 +8,8 @@ int main(int argc, char **argv) {
   }
 
   size_t N = atoi(argv[1]);
-  bool *states = (bool *)malloc(N * N * sizeof(bool));
-  uint32_t *counts = (uint32_t *)malloc(N * N * sizeof(uint32_t));
+  uint8_t *states = (uint8_t *)malloc(N * N * sizeof(bool));
+  uint32_t *counts = (uint32_t *)malloc((N + 2) * (N + 2) * sizeof(uint32_t));
 
   randomize(states, N, N);
 
@@ -22,8 +22,12 @@ int main(int argc, char **argv) {
   image.pixels = calloc(image.width * image.height, sizeof(pixel_t));
 
   char cated_string[255];
-
-  for (size_t t = 0; t < 100; t++) {
+  size_t t = 0;
+  for (; t < 100 - 2; t++) {
+    printf("iteration %zu \n",t);
+    gameoflife(counts, states, N, N);
+  }
+  for (; t < 100; t++) {
     gameoflife(counts, states, N, N);
     mapdatatoimage(&image, states);
     sprintf(cated_string, "result%zu.png", t);

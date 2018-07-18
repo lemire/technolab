@@ -6,7 +6,7 @@
 
 .PHONY: clean cleandist
 
-CFLAGS = -fPIC -std=c99 -O3  -Wall -Wextra -Wshadow -Wno-implicit-function-declaration -lpng
+CFLAGS = -fPIC -std=c99 -ggdb  -Wall -Wextra -Wshadow -Wno-implicit-function-declaration -lpng -fsanitize=address -fno-omit-frame-pointer
 EXECUTABLES=gameoflife
 
 HEADER=include/basicautomata.h include/pnghelper.h

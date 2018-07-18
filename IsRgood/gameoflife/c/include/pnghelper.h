@@ -112,11 +112,11 @@ fopen_failed:
   return status;
 }
 
-void mapdatatoimage(bitmap_t *image, const bool *states) {
+void mapdatatoimage(bitmap_t *image, const uint8_t *states) {
   for (size_t y = 0; y < image->height; y++) {
     for (size_t x = 0; x < image->width; x++) {
       pixel_t *pixel = pixel_at(image, x, y);
-      if (states[y * image->width + x]) {
+      if (states[y * image->width + x] == 1) {
         pixel->red = 0;
         pixel->green = 0;
         pixel->blue = 0;

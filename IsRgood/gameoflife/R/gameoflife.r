@@ -70,7 +70,12 @@ gameoflife <- function(source) {
   return (source)
 }
 
-for(i in (1:100)) {
+for(i in (1:98)) {
+  print(paste0("Iteration ", i))
+  counts = sumcounts(counts)
+  x = gameoflife(x)
+}
+for(i in (99:100)) {
   print(paste0("Iteration ", i))
   counts = sumcounts(counts)
   x = gameoflife(x)
