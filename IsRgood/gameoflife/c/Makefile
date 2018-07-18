@@ -6,7 +6,8 @@
 
 .PHONY: clean cleandist
 
-CFLAGS = -fPIC -std=c99 -ggdb  -Wall -Wextra -Wshadow -Wno-implicit-function-declaration -lpng -fsanitize=address -fno-omit-frame-pointer
+CFLAGS =  -fPIC -std=c99 -O3  -Wall -Wextra -Wshadow -Wno-implicit-function-declaration  
+LIBS= -lpng
 EXECUTABLES=gameoflife
 
 HEADER=include/basicautomata.h include/pnghelper.h
@@ -14,7 +15,7 @@ HEADER=include/basicautomata.h include/pnghelper.h
 all: $(EXECUTABLES)
 
 gameoflife:  src/gameoflife.c $(HEADER)
-	$(CC) $(CFLAGS) -o gameoflife  src/gameoflife.c -Iinclude
+	$(CC) $(CFLAGS) -o gameoflife  src/gameoflife.c -Iinclude $(LIBS)
 
 clean:
 	rm -f $(EXECUTABLES)
